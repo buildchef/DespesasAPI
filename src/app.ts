@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api", router);
+app.use("/despesas", router);
 
 app.listen(environment.app.port, async () => {
     console.log(`Servidor rodando em http://localhost:${environment.app.port}`);
