@@ -1,13 +1,15 @@
 import express from "express"
 import router from "./routes/routes";
+import { environment } from "./environment";
+import { BancoDeDaDos } from "./config/bancoDeDados";
 
 const app = express();
-const port = 3000;
 
 app.use(express.json());
 
 app.use("/api", router);
 
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+app.listen(environment.app.port, async () => {
+    console.log(`Servidor rodando em http://localhost:${environment.app.port}`);
+    await BancoDeDaDos.conectar();
 });
